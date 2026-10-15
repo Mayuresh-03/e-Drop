@@ -8,7 +8,6 @@ from database.postgresConn import get_db
 # FIX: Import models and schemas with aliases to avoid name collisions
 from models.all_model import User as UserModel
 from schemas.all_schema import UserResponse, UserCreate, TokenData
-from router.profile_routes import create_profile_for_user
 from auth import hashing, oauth2
 
 router = APIRouter(
@@ -29,13 +28,11 @@ def create_user(request: UserCreate, db: Session = Depends(get_db)):
         email=request.email,
         hashed_password=hashing.Hash.bcrypt(request.password),
         full_name=request.full_name,
-        role=request.role
+       
     )
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-
-    create_profile_for_user(db, new_user.id)
 
     return new_user
 

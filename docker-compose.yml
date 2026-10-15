@@ -1,24 +1,24 @@
 services:
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: eDrop_frontend
+    container_name: app_frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./frontend/:/app
+      - ./frontend:/app
       - /app/node_modules
     env_file:
       - ./frontend/.env
     depends_on:
       - backend
-  
+
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: eDrop_backend
+    container_name: app_backend
     ports:
       - "8000:8000"
     volumes:

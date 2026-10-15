@@ -2,7 +2,7 @@ fastapi
 starlette_session
 uvicorn[standard]
 sqlalchemy
-psycopg2-binary
+psycopg-binary
 python-dotenv
 pydantic
 pydantic[email]
@@ -14,8 +14,7 @@ python-multipart
 sendgrid
 authlib
 httpx
-geoalchemy2
 alembic
 supabase
-twilio
-Shapely>=1.8.0
+psycopg
+resend
